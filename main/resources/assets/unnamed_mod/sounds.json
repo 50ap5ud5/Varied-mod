@@ -1,0 +1,11 @@
+{
+	"test": {
+		"category": "master",
+		"sounds": [
+			{
+				"name": "unnamed_mod:misc/test",
+				"stream": false
+			}
+		]
+	}
+}
