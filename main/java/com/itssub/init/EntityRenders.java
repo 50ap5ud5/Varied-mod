@@ -9,7 +9,8 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class EntityRenders {
 
-	public static void init() {
-	RenderingRegistry.registerEntityRenderingHandler(EntityBee.class, new RenderBee(Minecraft.getMinecraft().getRenderManager(), new ModelBee(), 0.5F));
+	public static void init() 
+	{
+	RenderingRegistry.registerEntityRenderingHandler(EntityBee.class, new RenderBee(new ModelBee()));
 	}
 }

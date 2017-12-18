@@ -2,6 +2,7 @@ package com.itssub.render;
 
 import com.itssub.UnnamedMod;
 import com.itssub.common.entities.EntityBee;
+import com.itssub.utils.Utils;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -14,9 +15,9 @@ public class RenderBee extends RenderLiving<EntityBee>
 	private static final ResourceLocation BeeTexture = new ResourceLocation(UnnamedMod.MODID, "textures/entities/bee.png");
 	
 
-	public RenderBee(RenderManager rendermanagerIn, ModelBase modelbaseIn, float shadowsizeIn) 
+	public RenderBee(ModelBase modelbaseIn) 
 	{
-		super(rendermanagerIn, modelbaseIn, shadowsizeIn);
+		super(Utils.ReusedBs.render_manager, modelbaseIn, 0);
 	}
 
 	@Override
