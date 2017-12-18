@@ -7,13 +7,4 @@ import net.minecraft.item.Item;
 
 public class Utils {
 	
-	
-	public static Item regItem(Item item, String name)
-	{
-		item.setRegistryName(UnnamedMod.MODID, name);
-		item.setUnlocalizedName(UnnamedMod.MODID + ":" + name);
-		return item;
-	}
-	
-	
 }

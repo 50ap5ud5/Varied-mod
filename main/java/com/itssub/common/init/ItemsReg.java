@@ -19,9 +19,7 @@ public class ItemsReg {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {	
 		
-		Item test = Utils.regItem(new ItemBlank(), "debug_item");
 		
 		IForgeRegistry<Item> registry = event.getRegistry();
-		registry.register(test);
 	}
 }
