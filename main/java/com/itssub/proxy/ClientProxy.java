@@ -1,27 +1,23 @@
 package com.itssub.proxy;
 
-import com.itssub.common.init.EntitiesReg;
-import com.itssub.init.EntityRenders;
+import com.itssub.UnnamedMod;
+import com.itssub.common.entities.EntityBee;
+import com.itssub.models.ModelBee;
+import com.itssub.render.entities.RenderBee;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderItem;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class ClientProxy extends CommonProxy
 {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		if(FMLCommonHandler.instance().getSide().isClient())
-		{
-		EntityRenders.init();
-		super.init(event);
+		if(UnnamedMod.side.isClient()) {
+			
+			RenderingRegistry.registerEntityRenderingHandler(EntityBee.class, new RenderBee(new ModelBee()));
+		
 		}
 	}
 }
