@@ -18,10 +18,12 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ItemsReg {
 	
 	public static Item test_item = new ItemBlank("test_item");
+	public static Item steel_ingot = new ItemBlank("steel_ingot");
 	
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {	
 		IForgeRegistry<Item> reg = event.getRegistry();
 		reg.registerAll(test_item);
+		reg.registerAll(steel_ingot);
 	}
 }
