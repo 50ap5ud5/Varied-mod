@@ -1,8 +1,13 @@
 # Varied mod
 
 # Dev Side
-* Added Item Registry
-* Added Sounds Registry
+* Added Item Registry [20/12/2017]
+* Added Sounds Registry [20/12/2017]
+* Added item Rendering [21/12/2017]
+* Added Creative tab base [21/12/2017]
 
-# Player side
-* Added Bee Entity
+# Entities
+* Added Bee Entity [20/12/2017]
+
+# Items
+* Added Steel Ingot [21/12/2017]
