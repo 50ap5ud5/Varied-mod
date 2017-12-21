@@ -1,6 +1,11 @@
 package com.itssub.common.entities;
 
+import java.util.Set;
+
 import javax.annotation.Nullable;
+
+import com.google.common.collect.Sets;
+import com.itssub.common.init.ItemsReg;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -13,25 +18,32 @@ import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIFollow;
+import net.minecraft.entity.ai.EntityAIFollowOwner;
+import net.minecraft.entity.ai.EntityAIFollowOwnerFlying;
+import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWaterFlying;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.ai.EntityMoveHelper;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityFlying;
+import net.minecraft.entity.passive.EntityShoulderRiding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntityBee extends EntityAnimal implements EntityFlying
+public class EntityBee extends EntityShoulderRiding implements EntityFlying
 {
 
     private BlockPos boundOrigin;
@@ -41,10 +53,52 @@ public class EntityBee extends EntityAnimal implements EntityFlying
     {
         super(worldIn);
         this.setSize(0.4F, 0.8F);
+        tasks.addTask(6, new EntityAIFollowOwner(this, 4.0D, 4.0F, 4.0F));
+        this.tasks.addTask(2, new EntityAIFollowOwnerFlying(this, 1.0D, 5.0F, 1.0F));
+        this.tasks.addTask(2, new EntityAIWanderAvoidWaterFlying(this, 1.0D));
+//        this.tasks.addTask(3, new EntityAILandOnOwnersShoulder(this));
         this.moveHelper = new EntityFlyHelper(this);
     } 
 	
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Item.getItemFromBlock(Blocks.RED_FLOWER), Item.getItemFromBlock(Blocks.YELLOW_FLOWER));
+   // private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(ItemsReg.pollen);
 	
+    public boolean processInteract(EntityPlayer player, EnumHand hand)
+    {
+        ItemStack itemstack = player.getHeldItem(hand);
+
+        if (!this.isTamed() && TAME_ITEMS.contains(itemstack.getItem()))
+        {
+            if (!player.capabilities.isCreativeMode)
+            {
+                itemstack.shrink(1);
+            }
+
+            if (!this.world.isRemote)
+            {
+                if (this.rand.nextInt(10) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player))
+                {
+                    this.setTamedBy(player);
+                    this.playTameEffect(true);
+                    this.world.setEntityState(this, (byte)7);
+                }
+                else
+                {
+                    this.playTameEffect(false);
+                    this.world.setEntityState(this, (byte)6);
+                }
+            }
+
+            return true;
+        }
+		return true;
+    }
+    
+   /* public boolean isBreedingItem(ItemStack stack)
+    {
+        return TEMPTATION_ITEMS.contains(stack.getItem());
+    }
+	*/
 	@Override
 	public void travel(float p_191986_1_, float p_191986_2_, float p_191986_3_)
     {
@@ -60,9 +114,9 @@ public class EntityBee extends EntityAnimal implements EntityFlying
         {
             this.moveRelative(p_191986_1_, p_191986_2_, p_191986_3_, 0.02F);
             this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= 0.5D;
-            this.motionY *= 0.5D;
-            this.motionZ *= 0.5D;
+            this.motionX *= 1.0D;
+            this.motionY *= 1.0D;
+            this.motionZ *= 1.0D;
         }
         else
         {
@@ -125,7 +179,7 @@ public class EntityBee extends EntityAnimal implements EntityFlying
     {
         super.applyEntityAttributes();
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(6.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(2.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.4000000059604645D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20000000298023224D);
     }
@@ -184,7 +238,7 @@ public class EntityBee extends EntityAnimal implements EntityFlying
         int k = MathHelper.floor(this.posZ);
         BlockPos blockpos = new BlockPos(i, j, k);
         Block block = this.world.getBlockState(blockpos.down()).getBlock();
-        return block instanceof BlockLeaves || block == Blocks.GRASS || block instanceof BlockLog || block == Blocks.AIR && this.world.getLight(blockpos) > 8 && super.getCanSpawnHere();
+        return block instanceof BlockLeaves || block == Blocks.RED_FLOWER || block instanceof BlockLog || block == Blocks.AIR && this.world.getLight(blockpos) > 8 && super.getCanSpawnHere();
     }
 
     @Override
@@ -325,7 +379,14 @@ public class EntityBee extends EntityAnimal implements EntityFlying
 	        }
 	    }
 	  
+	   //Ignore this, still working on it
 	  
+	  /* @Override
+		protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+			this.dropItem(ItemsReg.dead_bee, this.getRNG().nextInt(1));
+			super.dropFewItems(wasRecentlyHit, lootingModifier);
+		}
+	  */
 	  
 	  
 

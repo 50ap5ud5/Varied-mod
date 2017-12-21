@@ -5,6 +5,7 @@ import com.itssub.common.entities.EntityBee;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -19,7 +20,7 @@ public class EntitiesReg {
 	public static void RegisterEntiites(RegistryEvent.Register<EntityEntry> event) {
 		
 		EntityEntry[] entries = {
-				createBuilder("Bee").entity(EntityBee.class).tracker(80, 3, false).build(),
+				createBuilder("Bee").entity(EntityBee.class).egg(0xffc100, 0x322600).tracker(80, 3, false).build(),
 			};
 		
 		event.getRegistry().registerAll(entries);	
