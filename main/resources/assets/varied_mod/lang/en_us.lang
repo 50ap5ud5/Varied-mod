@@ -3,3 +3,4 @@ item.steel_ingot.name=Steel Ingot
 item.test_item.name=Test Item
 item.dead_bee.name=Dead Bee
 entity.unnamed_mod.bee.name=Bee
+vm.subtitle.bee_buzz=Bee Buzzes

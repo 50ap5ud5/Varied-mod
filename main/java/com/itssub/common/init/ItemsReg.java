@@ -3,7 +3,7 @@ package com.itssub.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.itssub.UnnamedMod;
+import com.itssub.VariedMod;
 import com.itssub.common.items.ItemBlank;
 import com.itssub.render.items.ItemBlockRender;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber(modid = UnnamedMod.MODID)
+@Mod.EventBusSubscriber(modid = VariedMod.MODID)
 public class ItemsReg {
 	
 	public static List<Item> ITEMS = new ArrayList<>();
@@ -29,7 +29,7 @@ public class ItemsReg {
 		IForgeRegistry<Item> reg = event.getRegistry();
 		reg.registerAll(ITEMS.toArray(new Item[ITEMS.size()]));
 		
-		if(UnnamedMod.side.isClient()) 
+		if(VariedMod.side.isClient()) 
 		{
 			ItemBlockRender.items();
 		}
@@ -37,7 +37,7 @@ public class ItemsReg {
 	
 	public static Item createItem(Item item, String name, CreativeTabs tab) 
 	{
-		item.setRegistryName(UnnamedMod.MODID,name);
+		item.setRegistryName(VariedMod.MODID,name);
 		item.setUnlocalizedName(name);
 		item.setCreativeTab(tab);
 		ITEMS.add(item);

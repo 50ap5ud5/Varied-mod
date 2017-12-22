@@ -9,6 +9,9 @@
 # Entities
 * Added Bee Entity [20/12/2017]
 
+# Sounds
+* Buzzing for bees
+
 # Items
 * Added Steel Ingot [21/12/2017]
 * Added Dead Bee [22/12/2017]

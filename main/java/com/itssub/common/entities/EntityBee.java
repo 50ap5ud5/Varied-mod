@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Sets;
 import com.itssub.common.init.ItemsReg;
+import com.itssub.common.init.SoundReg;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -20,16 +21,13 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIFollow;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIFollowOwnerFlying;
-import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWaterFlying;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.passive.EntityFlying;
-import net.minecraft.entity.passive.EntityShoulderRiding;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -39,6 +37,7 @@ import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -46,6 +45,11 @@ import net.minecraft.world.World;
 
 public class EntityBee extends EntityTameable implements EntityFlying
 {
+	
+	@Override
+	public String getName() {
+		return "Bee";
+	}
 
     private BlockPos boundOrigin;
 	
@@ -53,11 +57,13 @@ public class EntityBee extends EntityTameable implements EntityFlying
 	public EntityBee(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.4F, 0.8F);
+        this.setSize(0.4F, 0.4F);
         tasks.addTask(6, new EntityAIFollowOwner(this, 4.0D, 4.0F, 4.0F));
         this.tasks.addTask(2, new EntityAIFollowOwnerFlying(this, 1.0D, 5.0F, 1.0F));
         this.tasks.addTask(2, new EntityAIWanderAvoidWaterFlying(this, 1.0D));
 //        this.tasks.addTask(3, new EntityAILandOnOwnersShoulder(this));
+        tasks.addTask(8, new EntityBee.AIMoveRandom());
+        this.setNoGravity(true);
         this.moveHelper = new EntityFlyHelper(this);
     } 
 	
@@ -101,9 +107,9 @@ public class EntityBee extends EntityTameable implements EntityFlying
         {
             this.moveRelative(p_191986_1_, p_191986_2_, p_191986_3_, 0.02F);
             this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= 0.800000011920929D;
-            this.motionY *= 0.800000011920929D;
-            this.motionZ *= 0.800000011920929D;
+            this.motionX *= 1.800000011920929D;
+            this.motionY *= 1.800000011920929D;
+            this.motionZ *= 1.800000011920929D;
         }
         else if (this.isInLava())
         {
@@ -154,6 +160,11 @@ public class EntityBee extends EntityTameable implements EntityFlying
         this.limbSwingAmount += (f2 - this.limbSwingAmount) * 0.4F;
         this.limbSwing += this.limbSwingAmount;
     }
+	
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundReg.bee_buzz;
+	}
 
 
     @Override
@@ -269,7 +280,6 @@ public class EntityBee extends EntityTameable implements EntityFlying
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

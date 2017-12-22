@@ -1,6 +1,6 @@
 package com.itssub.common.init;
 
-import com.itssub.UnnamedMod;
+import com.itssub.VariedMod;
 import com.itssub.common.entities.EntityBee;
 
 import net.minecraft.entity.Entity;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 
 
-@Mod.EventBusSubscriber(modid = UnnamedMod.MODID)
+@Mod.EventBusSubscriber(modid = VariedMod.MODID)
 public class EntitiesReg {
 	
 	@SubscribeEvent
@@ -30,7 +30,7 @@ public class EntitiesReg {
 	
 	private static <E extends Entity> EntityEntryBuilder<E> createBuilder(String name) {
 		final EntityEntryBuilder<E> builder = EntityEntryBuilder.create();
-		final ResourceLocation registryName = new ResourceLocation(UnnamedMod.MODID, name);
+		final ResourceLocation registryName = new ResourceLocation(VariedMod.MODID, name);
 		return builder.id(registryName, entityID++).name(registryName.toString());
 	}	
 }

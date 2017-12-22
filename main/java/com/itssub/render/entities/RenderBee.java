@@ -1,6 +1,6 @@
 package com.itssub.render.entities;
 
-import com.itssub.UnnamedMod;
+import com.itssub.VariedMod;
 import com.itssub.common.entities.EntityBee;
 import com.itssub.utils.Utils;
 
@@ -18,7 +18,7 @@ public class RenderBee extends RenderLiving<EntityBee>
 	@Override
 	protected ResourceLocation getEntityTexture(EntityBee entity) 
 	{
-		return new ResourceLocation(UnnamedMod.MODID, "textures/entities/bee.png");
+		return new ResourceLocation(VariedMod.MODID, "textures/entities/bee.png");
 	}
 	
 }

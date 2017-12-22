@@ -1,6 +1,6 @@
 package com.itssub.proxy;
 
-import com.itssub.UnnamedMod;
+import com.itssub.VariedMod;
 import com.itssub.common.entities.EntityBee;
 import com.itssub.models.ModelBee;
 import com.itssub.render.entities.RenderBee;
@@ -14,7 +14,7 @@ public class ClientProxy extends CommonProxy
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		if(UnnamedMod.side.isClient()) {
+		if(VariedMod.side.isClient()) {
 			
 			RenderingRegistry.registerEntityRenderingHandler(EntityBee.class, new RenderBee(new ModelBee()));
 		

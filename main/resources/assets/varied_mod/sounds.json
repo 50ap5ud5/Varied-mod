@@ -1,0 +1,17 @@
+{
+	"test": {
+		"category": "master",
+		"sounds": [{
+			"name": "varied_mod:misc/test",
+			"stream": false
+		}]
+	},
+	"bee_buzz": {
+		"subtitle": "vm.subtitle.bee_buzz",
+		"category": "neutral",
+		"sounds": [{
+			"name": "varied_mod:bee_buzz",
+			"stream": false
+		}]
+	}
+}

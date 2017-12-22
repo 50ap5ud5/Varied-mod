@@ -10,15 +10,15 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = UnnamedMod.MODID, version = UnnamedMod.VERSION)
-public class UnnamedMod
+@Mod(modid = VariedMod.MODID, version = VariedMod.VERSION)
+public class VariedMod
 {
-    public static final String MODID = "unnamed_mod";
-    public static final String NAME = "Unnamed Mod";
+    public static final String MODID = "varied_mod";
+    public static final String NAME = "Varied Mod";
     public static final String VERSION = "1.0";
 
     @Instance
-	public static UnnamedMod instance;   
+	public static VariedMod instance;   
    
     public static  Side side =  FMLCommonHandler.instance().getSide();
     
