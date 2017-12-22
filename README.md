@@ -10,7 +10,7 @@
 * Added Bee Entity [20/12/2017]
 
 # Sounds
-* Buzzing for bees
+* Buzzing For Bees [22/12/2017]
 
 # Items
 * Added Steel Ingot [21/12/2017]
