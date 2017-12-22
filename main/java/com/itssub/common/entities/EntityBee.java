@@ -30,6 +30,7 @@ import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.passive.EntityFlying;
 import net.minecraft.entity.passive.EntityShoulderRiding;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -43,7 +44,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntityBee extends EntityShoulderRiding implements EntityFlying
+public class EntityBee extends EntityTameable implements EntityFlying
 {
 
     private BlockPos boundOrigin;
@@ -61,8 +62,7 @@ public class EntityBee extends EntityShoulderRiding implements EntityFlying
     } 
 	
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Item.getItemFromBlock(Blocks.RED_FLOWER), Item.getItemFromBlock(Blocks.YELLOW_FLOWER));
-   // private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(ItemsReg.pollen);
-	
+
     public boolean processInteract(EntityPlayer player, EnumHand hand)
     {
         ItemStack itemstack = player.getHeldItem(hand);
@@ -94,11 +94,6 @@ public class EntityBee extends EntityShoulderRiding implements EntityFlying
 		return true;
     }
     
-   /* public boolean isBreedingItem(ItemStack stack)
-    {
-        return TEMPTATION_ITEMS.contains(stack.getItem());
-    }
-	*/
 	@Override
 	public void travel(float p_191986_1_, float p_191986_2_, float p_191986_3_)
     {
@@ -179,7 +174,7 @@ public class EntityBee extends EntityShoulderRiding implements EntityFlying
     {
         super.applyEntityAttributes();
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(2.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.4000000059604645D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20000000298023224D);
     }
@@ -379,14 +374,12 @@ public class EntityBee extends EntityShoulderRiding implements EntityFlying
 	        }
 	    }
 	  
-	   //Ignore this, still working on it
-	  
-	  /* @Override
+	   @Override
 		protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
-			this.dropItem(ItemsReg.dead_bee, this.getRNG().nextInt(1));
+			this.dropItem(ItemsReg.dead_bee, 1);
 			super.dropFewItems(wasRecentlyHit, lootingModifier);
 		}
-	  */
+	  
 	  
 	  
 
