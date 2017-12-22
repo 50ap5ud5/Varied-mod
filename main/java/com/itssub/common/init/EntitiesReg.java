@@ -28,9 +28,9 @@ public class EntitiesReg {
 	
 	private static int entityID = 0;
 	
-	private static <E extends Entity> EntityEntryBuilder<E> createBuilder(String name) {
-		final EntityEntryBuilder<E> builder = EntityEntryBuilder.create();
-		final ResourceLocation registryName = new ResourceLocation(VariedMod.MODID, name);
-		return builder.id(registryName, entityID++).name(registryName.toString());
-	}	
+    private static <E extends Entity> EntityEntryBuilder<E> createBuilder(String name) {
+        final EntityEntryBuilder<E> builder = EntityEntryBuilder.create();
+        final ResourceLocation registryName = new ResourceLocation(VariedMod.MODID, name);
+        return builder.id(registryName, entityID++).name(registryName.toString().replaceAll(VariedMod.MODID + ":", ""));
+    }
 }

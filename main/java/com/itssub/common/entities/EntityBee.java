@@ -162,10 +162,27 @@ public class EntityBee extends EntityTameable implements EntityFlying
     }
 	
 	@Override
-	protected SoundEvent getAmbientSound() {
-		return SoundReg.bee_buzz;
-	}
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+			int R = world.rand.nextInt(80);
+			{
+				if (R == 4) {
+					this.playSound(SoundReg.bee_buzz, 0.03F, 1.0F);
+				}	
+					}
+				super.onLivingUpdate();
+			}
 
+	
+	@Override
+	public boolean canBeCollidedWith() {
+		return true;
+	}
+	
+	@Override
+	public boolean canBePushed() {
+		return true;
+	}
 
     @Override
     protected void initEntityAI()
@@ -229,13 +246,6 @@ public class EntityBee extends EntityTameable implements EntityFlying
         return this.height * 0.6F;
     }
 
-
-    @Override
-    public void onLivingUpdate()
-    {	
-        super.onLivingUpdate();
-    } 
-
     @Override
     public boolean getCanSpawnHere()
     {
@@ -257,13 +267,6 @@ public class EntityBee extends EntityTameable implements EntityFlying
     public BlockPos getBoundOrigin()
     {
         return this.boundOrigin;
-    }
-    
-
-    @Override
-    public boolean canBePushed()
-    {
-        return true;
     }
 
     protected void collideWithEntity(Entity entityIn)
