@@ -3,7 +3,7 @@
 # Dev Side
 * Added Item Registry [20/12/2017]
 * Added Sounds Registry [20/12/2017]
-* Added item Rendering [21/12/2017]
+* Added Item Rendering [21/12/2017]
 * Added Creative tab base [21/12/2017]
 
 # Entities
