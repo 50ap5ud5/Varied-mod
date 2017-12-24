@@ -1,11 +1,10 @@
-package com.itssub.common.init;
+package com.vm.common.init;
 
-import com.itssub.VariedMod;
-import com.itssub.common.entities.EntityBee;
+import com.vm.Varied_Mod;
+import com.vm.common.entities.EntityBee;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -13,7 +12,7 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 
 
-@Mod.EventBusSubscriber(modid = VariedMod.MODID)
+@Mod.EventBusSubscriber(modid = Varied_Mod.MODID)
 public class EntitiesReg {
 	
 	@SubscribeEvent
@@ -30,7 +29,7 @@ public class EntitiesReg {
 	
     private static <E extends Entity> EntityEntryBuilder<E> createBuilder(String name) {
         final EntityEntryBuilder<E> builder = EntityEntryBuilder.create();
-        final ResourceLocation registryName = new ResourceLocation(VariedMod.MODID, name);
-        return builder.id(registryName, entityID++).name(registryName.toString().replaceAll(VariedMod.MODID + ":", ""));
+        final ResourceLocation registryName = new ResourceLocation(Varied_Mod.MODID, name);
+        return builder.id(registryName, entityID++).name(registryName.toString().replaceAll(Varied_Mod.MODID + ":", ""));
     }
 }

@@ -1,4 +1,4 @@
-package com.itssub.utils;
+package com.vm.utils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;

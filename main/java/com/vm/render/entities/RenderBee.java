@@ -1,8 +1,8 @@
-package com.itssub.render.entities;
+package com.vm.render.entities;
 
-import com.itssub.VariedMod;
-import com.itssub.common.entities.EntityBee;
-import com.itssub.utils.Utils;
+import com.vm.Varied_Mod;
+import com.vm.common.entities.EntityBee;
+import com.vm.utils.Utils;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -18,7 +18,7 @@ public class RenderBee extends RenderLiving<EntityBee>
 	@Override
 	protected ResourceLocation getEntityTexture(EntityBee entity) 
 	{
-		return new ResourceLocation(VariedMod.MODID, "textures/entities/bee.png");
+		return new ResourceLocation(Varied_Mod.MODID, "textures/entities/bee.png");
 	}
 	
 }

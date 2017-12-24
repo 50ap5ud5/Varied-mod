@@ -1,6 +1,6 @@
-package com.itssub.tabs;
+package com.vm.tabs;
 
-import com.itssub.common.init.ItemsReg;
+import com.vm.common.init.ItemsReg;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

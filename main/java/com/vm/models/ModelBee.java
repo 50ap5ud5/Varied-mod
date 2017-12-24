@@ -1,6 +1,4 @@
-package com.itssub.models;
-
-import org.lwjgl.opengl.GL11;
+package com.vm.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -117,8 +115,6 @@ public class ModelBee extends ModelBase
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
-     GL11.glPushMatrix();
-     GL11.glTranslatef(0F, -0.2F, 0F);
     ASS.render(f5);
     Eye1.render(f5);
     Wing1.render(f5);
@@ -132,8 +128,7 @@ public class ModelBee extends ModelBase
     Leg4.render(f5);
     Leg5.render(f5);
     Leg6.render(f5);
-   GL11.glPopMatrix();
-}
+  }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)
   {

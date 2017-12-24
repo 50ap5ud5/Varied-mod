@@ -2,7 +2,7 @@
 	"test": {
 		"category": "master",
 		"sounds": [{
-			"name": "varied_mod:misc/test",
+			"name": "vm:misc/test",
 			"stream": false
 		}]
 	},
@@ -10,7 +10,7 @@
 		"subtitle": "vm.subtitle.bee_buzz",
 		"category": "neutral",
 		"sounds": [{
-			"name": "varied_mod:bee_buzz",
+			"name": "vm:bee_buzz",
 			"stream": false
 		}]
 	}

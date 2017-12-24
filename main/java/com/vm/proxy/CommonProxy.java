@@ -1,4 +1,4 @@
-package com.itssub.proxy;
+package com.vm.proxy;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 

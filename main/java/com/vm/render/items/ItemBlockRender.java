@@ -1,7 +1,7 @@
-package com.itssub.render.items;
+package com.vm.render.items;
 
-import com.itssub.VariedMod;
-import com.itssub.common.init.ItemsReg;
+import com.vm.Varied_Mod;
+import com.vm.common.init.ItemsReg;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -13,7 +13,7 @@ public class ItemBlockRender {
 	{
 		for (int i = 0; i < ItemsReg.ITEMS.size(); i++) {
 			Item item = ItemsReg.ITEMS.get(i);
-			ModelResourceLocation mrl = new ModelResourceLocation(VariedMod.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory");
+			ModelResourceLocation mrl = new ModelResourceLocation(Varied_Mod.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory");
 			ModelLoader.setCustomModelResourceLocation(item, 0, mrl);
 		}
 	}

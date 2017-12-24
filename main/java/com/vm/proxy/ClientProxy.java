@@ -1,9 +1,9 @@
-package com.itssub.proxy;
+package com.vm.proxy;
 
-import com.itssub.VariedMod;
-import com.itssub.common.entities.EntityBee;
-import com.itssub.models.ModelBee;
-import com.itssub.render.entities.RenderBee;
+import com.vm.Varied_Mod;
+import com.vm.common.entities.EntityBee;
+import com.vm.models.ModelBee;
+import com.vm.render.entities.RenderBee;
 
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -12,12 +12,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 public class ClientProxy extends CommonProxy
 {
 	
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		if(VariedMod.side.isClient()) {
-			
+	public void init() {
 			RenderingRegistry.registerEntityRenderingHandler(EntityBee.class, new RenderBee(new ModelBee()));
-		
 		}
-	}
 }

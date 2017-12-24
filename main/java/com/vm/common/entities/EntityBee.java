@@ -1,12 +1,12 @@
-package com.itssub.common.entities;
+package com.vm.common.entities;
 
 import java.util.Set;
 
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Sets;
-import com.itssub.common.init.ItemsReg;
-import com.itssub.common.init.SoundReg;
+import com.vm.common.init.ItemsReg;
+import com.vm.common.init.SoundReg;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -393,11 +393,4 @@ public class EntityBee extends EntityTameable implements EntityFlying
 			super.dropFewItems(wasRecentlyHit, lootingModifier);
 		}
 	  
-	  
-	  
-
-	
-	
-	
-	
 }

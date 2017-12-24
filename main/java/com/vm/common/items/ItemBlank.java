@@ -1,4 +1,4 @@
-package com.itssub.common.items;
+package com.vm.common.items;
 
 import net.minecraft.item.Item;
 
