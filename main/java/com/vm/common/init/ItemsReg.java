@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vm.Varied_Mod;
+import com.vm.client.render.items.ItemBlockRender;
 import com.vm.common.items.ItemBlank;
-import com.vm.render.items.ItemBlockRender;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

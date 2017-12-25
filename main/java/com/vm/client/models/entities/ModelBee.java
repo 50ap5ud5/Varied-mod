@@ -1,4 +1,4 @@
-package com.vm.models;
+package com.vm.client.models.entities;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

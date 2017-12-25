@@ -57,4 +57,38 @@ public class GenerateJsons {
 	    }
 	
 	
+	public static void SkinPacks(String itemName, String textureName){
+        File fileDir = new File(mod_path + "\\models\\item\\");
+        if(!fileDir.exists()){
+            fileDir.mkdirs();
+        }
+
+        try {
+
+            Writer writer = new OutputStreamWriter(new FileOutputStream(fileDir + "\\" + itemName + ".json"), "UTF-8");
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            JsonWriter jw = gson.newJsonWriter(writer);
+
+            jw.beginObject();
+            jw.name("parent").value("item/generated");
+            jw.name("textures");
+            jw.beginObject();
+            jw.name("layer0").value(Varied_Mod.MODID + ":items/" + textureName);
+            jw.endObject();
+            jw.endObject();
+
+            writer.close();
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+	
+	
+	
 }

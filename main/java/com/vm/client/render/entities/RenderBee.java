@@ -1,4 +1,4 @@
-package com.vm.render.entities;
+package com.vm.client.render.entities;
 
 import com.vm.Varied_Mod;
 import com.vm.common.entities.EntityBee;
