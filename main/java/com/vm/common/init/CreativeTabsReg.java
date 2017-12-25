@@ -7,6 +7,6 @@ import net.minecraft.init.Items;
 
 public class CreativeTabsReg {
 
-    public static final CreativeTabs MAIN_TAB = new TabBase("maintab", Items.CAKE);
+    public static final CreativeTabs MAIN_TAB = new TabBase("maintab", Items.CLOCK);
 	
 }

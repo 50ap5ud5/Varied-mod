@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "varied_mod:items/dead_bee"
+    "layer0": "vm:items/dead_bee"
   }
 }

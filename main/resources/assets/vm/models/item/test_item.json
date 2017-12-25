@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "varied_mod:items/test_item"
+    "layer0": "vm:items/test_item"
   }
 }
