@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.vm.Varied_Mod;
 import com.vm.client.render.items.ItemBlockRender;
 import com.vm.common.TileEntities.TileEntityTest;
+import com.vm.common.blocks.BasicBlock;
 import com.vm.common.blocks.TileEntityBlock;
 
 import net.minecraft.block.Block;
@@ -20,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -35,29 +37,26 @@ public class BlockReg {
 
 		public static final List<Block> BLOCKS = new ArrayList<>();
 
-		Block tile_test = createBlock(new TileEntityBlock(Material.AIR, new TileEntityTest()), "tile_test", CreativeTabsReg.MAIN_TAB);
+		public static void init() {
+			System.out.println("blocks test");
+		Block tile_test = createBlock(new TileEntityBlock(Material.CLAY, new TileEntityTest()), "tile_test", CreativeTabsReg.MAIN_TAB);
+		Block block_test = createBlock(new BasicBlock(Material.CLAY), "test", null);
 		
+		registerTileEntities();
 		
+		if(Varied_Mod.side.isClient()) 
+		{
+			ItemBlockRender.blocks();
+		}
 		
-		@SubscribeEvent
-		public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-			final IForgeRegistry<Block> reg = event.getRegistry();
-				reg.registerAll(BLOCKS.toArray(new Block[BLOCKS.size()]));
-				
-				if(Varied_Mod.side.isClient()) 
-				{
-					ItemBlockRender.blocks();
-				}
-				
-			};
-
+	}
 			
-		public static Block createBlock(Block block, String name, CreativeTabs tab) 
+	public static Block createBlock(Block block, String name, CreativeTabs tab) 
 		{
 			block.setRegistryName(Varied_Mod.MODID,name);
 			block.setUnlocalizedName(name);
 			block.setCreativeTab(tab);
-			BLOCKS.add(block);
+			ForgeRegistries.BLOCKS.register(block);
 			return block;
 		}
 		
