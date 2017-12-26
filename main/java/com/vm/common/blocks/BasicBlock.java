@@ -7,7 +7,6 @@ public class BasicBlock extends Block {
 
 	public BasicBlock(Material materialIn) {
 		super(materialIn);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

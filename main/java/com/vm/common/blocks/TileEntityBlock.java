@@ -15,7 +15,6 @@ public class TileEntityBlock extends Block implements ITileEntityProvider {
 	public TileEntityBlock(Material materialIn, TileEntity tile) {
 		super(materialIn);
 		this.tile = tile;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

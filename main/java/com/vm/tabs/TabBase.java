@@ -19,7 +19,6 @@ public class TabBase extends CreativeTabs{
 	@Override
 	public ItemStack getTabIconItem() {
 		return stack;
-		//If block wanted use: Item.getItemFromBlock()
 	}
 
 }
