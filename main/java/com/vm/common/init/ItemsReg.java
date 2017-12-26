@@ -6,6 +6,7 @@ import java.util.List;
 import com.vm.Varied_Mod;
 import com.vm.client.render.items.ItemBlockRender;
 import com.vm.common.items.ItemBlank;
+import com.vm.common.items.ItemHoney;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -21,7 +22,8 @@ public class ItemsReg {
 	
 	public static Item test_item = createItem(new ItemBlank(), "test_item", CreativeTabsReg.MAIN_TAB);
 	public static Item steel_ingot = createItem(new ItemBlank(), "steel_ingot", CreativeTabsReg.MAIN_TAB);
-	public static Item dead_bee = createItem(new ItemBlank(), "dead_bee", CreativeTabsReg.MAIN_TAB);
+	public static Item dead_bee = createItem(new ItemBlank(), "dead_bee", CreativeTabsReg.BEE_TAB);
+	public static Item honey_bottle = createItem(new ItemHoney(), "honey_bottle", CreativeTabsReg.BEE_TAB);
 	
 	
 	@SubscribeEvent
@@ -34,7 +36,7 @@ public class ItemsReg {
 			ItemBlockRender.items();
 		}
 	}
-	
+
 	public static Item createItem(Item item, String name, CreativeTabs tab) 
 	{
 		item.setRegistryName(Varied_Mod.MODID,name);

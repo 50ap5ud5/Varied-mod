@@ -31,13 +31,13 @@ import net.minecraft.entity.passive.EntityFlying;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -94,10 +94,27 @@ public class EntityBee extends EntityTameable implements EntityFlying
                     this.world.setEntityState(this, (byte)6);
                 }
             }
-
             return true;
         }
-		return true;
+
+		else {
+			if (this.isTamed() && itemstack.getItem() == Items.GLASS_BOTTLE) {
+				
+				itemstack.shrink(1);
+				
+				if (itemstack.isEmpty()) {
+					player.setHeldItem(hand, new ItemStack(ItemsReg.honey_bottle));
+		        }
+		        
+				else if (!player.inventory.addItemStackToInventory(new ItemStack(ItemsReg.honey_bottle))) {
+					player.dropItem(new ItemStack(ItemsReg.honey_bottle), false);
+		        }
+		        
+				return true;
+			}
+		}
+        return true;
+	
     }
     
 	@Override
