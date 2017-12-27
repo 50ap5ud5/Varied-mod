@@ -32,6 +32,7 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigate;
@@ -101,7 +102,8 @@ public class EntityBee extends EntityTameable implements EntityFlying
 			if (this.isTamed() && itemstack.getItem() == Items.GLASS_BOTTLE) {
 				
 				itemstack.shrink(1);
-				
+				this.playSound(SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, 0.9F, 1.3F);
+			
 				if (itemstack.isEmpty()) {
 					player.setHeldItem(hand, new ItemStack(ItemsReg.honey_bottle));
 		        }
